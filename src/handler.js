@@ -27,18 +27,18 @@ const addBookHandler = (request, h) => {
     const updatedAt = insertedAt;
 
     const newBook = {
-        name, year, author, summary, publisher, pageCount, readPage, id, finished, reading, insertedAt, updatedAt
+        name, year, author, summary, publisher, pageCount, readPage, bookId, finished, reading, insertedAt, updatedAt
     }
 
     books.push(newBook);
-    const isSuccess = books.filter((book) => book.id === bookId).length > 0;
+    const isSuccess = books.filter((book) => book.bookId === bookId).length > 0;
 
     if (isSuccess) {
         const response = h.response({
           status: 'success',
           message: 'Buku berhasil ditambahkan',
           data: {
-            bookId: id,
+            bookId: bookId,
           },
         });
         response.code(201);
@@ -53,7 +53,7 @@ const getBookHandler = () => {
 
 const getBookDetailHandler = (request, h) => {
     const bookId = request.params;
-    const {id, name, year, author, summary, publisher, pageCount, readPage, finished, reading, insertedAt, updatedAt} = request.payload;
+    const {name, year, author, summary, publisher, pageCount, readPage, finished, reading, insertedAt, updatedAt} = request.payload;
     const index = books.findIndex((books) => books.bookId === bookId);
     if (index !== -1) {
         status: 'success';
