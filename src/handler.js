@@ -1,3 +1,4 @@
+const { response } = require("express");
 const {nanoid} = require(`nanoid`);
 const books = require("./books");
 
@@ -49,6 +50,7 @@ const addBookHandler = (request, h) => {
 const getBookHandler = () => {
     status: 'success';
     data: {books};
+    return data;
 }
 
 const getBookDetailHandler = (request, h) => {
@@ -57,7 +59,7 @@ const getBookDetailHandler = (request, h) => {
     const index = books.findIndex((books) => books.bookId === bookId);
     if (index !== -1) {
         status: 'success';
-        data: {books[index]};
+        data: {bookDetail[index]};
         response.code(200);
         return response;
     }
