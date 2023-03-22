@@ -27,7 +27,7 @@ const routes = [
 
     {
         method: 'PUT',
-        path: ' /books/{bookId}',
+        path: '/books/{bookId}',
         handler: editBookByIdHandler
     },
 
