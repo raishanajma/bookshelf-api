@@ -1,0 +1,24 @@
+{
+  "name": "bookshelf-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raishanajma/bookshelf-api.git"
+  },
+  "keywords": [],
+  "author": "Raisha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raishanajma/bookshelf-api/issues"
+  },
+  "homepage": "https://github.com/raishanajma/bookshelf-api#readme",
+  "dependencies": {
+    "@hapi/hapi": "^21.3.0"
+  }
+}
