@@ -31,7 +31,7 @@ const addBookHandler = (request, h) => {
     }
 
     books.push(newBook);
-    const isSuccess = books.filter((book) => book.id === id).length > 0;
+    const isSuccess = books.filter((book) => book.id === bookId).length > 0;
 
     if (isSuccess) {
         const response = h.response({
@@ -54,7 +54,7 @@ const getBookHandler = () => {
 const getBookDetailHandler = (request, h) => {
     const bookId = request.params;
     const {id, name, year, author, summary, publisher, pageCount, readPage, finished, reading, insertedAt, updatedAt} = request.payload;
-    const index = books.findIndex((book) => book.bookId === bookId);
+    const index = books.findIndex((books) => books.bookId === bookId);
     if (index !== -1) {
         status: 'success';
         data: {books[index]};
