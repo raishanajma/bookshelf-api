@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^21.3.0",
-    "eslint": "^8.36.0"
+    "eslint": "^8.36.0",
+    "nanoid": "^4.0.1"
   }
 }
