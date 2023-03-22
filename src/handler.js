@@ -20,7 +20,7 @@ const addBookHandler = (request, h) => {
         return response;
     }
 
-    const id = nanoid(16);
+    const bookId = nanoid(16);
     const finished = pageCount === readPage ? true : false;
     const reading = pageCount === readPage ? true : false;
     const insertedAt = new Date().toISOString();
