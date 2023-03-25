@@ -4,7 +4,7 @@ const books = require("./books");
 
 const addBookHandler = (request, h) => {
     const {name, year, author, summary, publisher, pageCount, readPage} = request.payload;
-    if(name === null) {
+    if(name === undefined) {
         const response = h.response({
         status: 'fail',
         message: 'Gagal menambahkan buku. Mohon isi nama buku',
@@ -55,20 +55,21 @@ const getBookHandler = () => {
 
 const getBookDetailHandler = (request, h) => {
     const bookId = request.params;
-    const {name, year, author, summary, publisher, pageCount, readPage, finished, reading, insertedAt, updatedAt} = request.payload;
-    const index = books.findIndex((books) => books.bookId === bookId);
-    if (index !== -1) {
-        status: 'success';
-        data: {bookDetail[index]};
-        response.code(200);
-        return response;
-    }
-    const response = h.response({
-        status: 'fail',
+    const book = books.filter((n) => n.bookId === bookId)[0];
+    if (book !== undefined) {
+        return {
+          status: 'success',
+          data: {book}
+        };
+      }
+     
+      const response = h.response({
+        status: 'Fail',
         message: 'Buku tidak ditemukan',
-    });
-    response.code(404);
-    return response;
+      });
+  
+      response.code(404);
+      return response;
 }
 
 const editBookByIdHandler = (request, h) => {
@@ -77,7 +78,7 @@ const editBookByIdHandler = (request, h) => {
     const updatedAt = new Date().toISOString();
     const index = books.findIndex((book) => book.bookId === bookId);
 
-    if(name === null) {
+    if(name === undefined) {
         const response = h.response({
         status: 'fail',
         message: 'Gagal memperbarui buku. Mohon isi nama buku',
