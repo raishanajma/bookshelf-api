@@ -1,3 +1,4 @@
+const { name } = require("ejs");
 const { response } = require("express");
 const {nanoid} = require(`nanoid`);
 const books = require("./books");
@@ -47,16 +48,16 @@ const addBookHandler = (request, h) => {
     }
 }
 
-const getBookHandler = () => {
-    status: 'success';
-    data: {books};
-    return data;
-}
+const getBookHandler = () => ({
+    status: 'success',
+    data: {books}
+});
 
 const getBookDetailHandler = (request, h) => {
     const bookId = request.params;
-    const book = books.filter((n) => n.bookId === bookId)[0];
+    const book = books.filter((book) => book.bookId === bookId)[0];
     if (book !== undefined) {
+        response.code(200);
         return {
           status: 'success',
           data: {book}
@@ -64,7 +65,7 @@ const getBookDetailHandler = (request, h) => {
       }
      
       const response = h.response({
-        status: 'Fail',
+        status: 'fail',
         message: 'Buku tidak ditemukan',
       });
   
@@ -113,7 +114,7 @@ const editBookByIdHandler = (request, h) => {
         status: 'fail',
         message: 'Gagal memperbarui buku. Id tidak ditemukan',
     });
-    response.code(400);
+    response.code(404);
     return response;
 };
 
