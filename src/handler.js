@@ -38,7 +38,7 @@ const addBookHandler = (request, h) => {
     const response = h.response({
       status: 'success',
       message: 'Buku berhasil ditambahkan',
-      data: {id: bookId},
+      data: {bookId: bookId},
     });
     response.code(201);
     return response;
