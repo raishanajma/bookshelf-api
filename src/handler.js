@@ -28,7 +28,7 @@ const addBookHandler = (request, h) => {
   const updatedAt = insertedAt;
 
   const newBook = {
-    name, year, author, summary, publisher, pageCount, readPage, bookId, finished, reading, insertedAt, updatedAt
+    bookId, name, year, author, summary, publisher, pageCount, readPage, bookId, finished, reading, insertedAt, updatedAt
   }
 
   books.push(newBook);
