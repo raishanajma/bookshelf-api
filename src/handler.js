@@ -76,21 +76,23 @@ const getBookHandler = (request, h) => {
 
 const getBookDetailHandler = (request, h) => {
   const {bookId} = request.params;
-  const book = books.filter((book) => book.bookId === bookId)[0];
+  const book = books.filter((book) => book.id === bookId)[0];
 
   if (book !== undefined) {
     const response = h.response({
       status: 'success',
-      data: {book}
+      data: {book},
     });
+
     response.code(200);
     return response;
   }
-     
+
   const response = h.response({
     status: 'fail',
     message: 'Buku tidak ditemukan',
   });
+
   response.code(404);
   return response;
 }
@@ -99,7 +101,7 @@ const editBookByIdHandler = (request, h) => {
   const {bookId} = request.params;
   const {name, year, author, summary, publisher, pageCount, readPage, reading} = request.payload;
   const updatedAt = new Date().toISOString();
-  const index = books.findIndex((book) => book.bookId === bookId);
+  const index = books.findIndex((book) => book.id === bookId);
 
   if(!name) {
     const response = h.response({
