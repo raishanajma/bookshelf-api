@@ -121,8 +121,7 @@ const editBookByIdHandler = (request, h) => {
 
   if (index !== -1) {
     books[index] = {
-      ...books[index],
-      bookId, name, year, author, summary, publisher, pageCount, readPage, reading, updatedAt
+      ...books[index], bookId, name, year, author, summary, publisher, pageCount, readPage, reading, updatedAt
     };
     const response = h.response({
       status: 'success',
