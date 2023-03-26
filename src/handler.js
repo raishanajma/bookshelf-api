@@ -96,7 +96,7 @@ const getBookDetailHandler = (request, h) => {
 
 const editBookByIdHandler = (request, h) => {
   const bookId = request.params;
-  const {name, year, author, summary, publisher, pageCount, readPage} = request.payload;
+  const {name, year, author, summary, publisher, pageCount, readPage, readPage} = request.payload;
   const updatedAt = new Date().toISOString();
   const index = books.findIndex((book) => book.bookId === bookId);
 
@@ -121,7 +121,7 @@ const editBookByIdHandler = (request, h) => {
   if (index !== -1) {
     books[index] = {
       ...books[index],
-      name, year, author, summary, publisher, pageCount, readPage, updatedAt
+      name, year, author, summary, publisher, pageCount, readPage, reading, updatedAt
     };
     const response = h.response({
       status: 'success',
