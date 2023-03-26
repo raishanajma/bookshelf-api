@@ -76,7 +76,8 @@ const getBookHandler = (request, h) => {
 
 const getBookDetailHandler = (request, h) => {
   const {bookId} = request.params;
-  const book = books.filter((book) => book.bookId === bookId[0]);
+  const book = books.filter((book) => book.bookId === bookId)[0];
+
   if (book !== undefined) {
     const response = h.response({
       status: 'success',
@@ -121,7 +122,7 @@ const editBookByIdHandler = (request, h) => {
   if (index !== -1) {
     books[index] = {
       ...books[index],
-      name, year, author, summary, publisher, pageCount, readPage, reading, updatedAt
+      bookId, name, year, author, summary, publisher, pageCount, readPage, reading, updatedAt
     };
     const response = h.response({
       status: 'success',
